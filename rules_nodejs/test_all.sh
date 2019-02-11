@@ -4,7 +4,6 @@ set -eux -o pipefail
 # -x: shows the commands that get run
 # -o pipefail: causes a pipeline to produce a failure return code if any command errors
 
-ROOT_DIR=$(pwd)
 SCRIPT_DIR=$(cd $(dirname "$0"); pwd)
 
 $SCRIPT_DIR/clean_all.sh
