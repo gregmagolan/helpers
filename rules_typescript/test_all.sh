@@ -15,8 +15,8 @@ yarn bazel test ...
 
 (
   cd internal/karma
+  yarn
   yarn bazel build ...
-  yarn bazel test ...
 )
 
 yarn e2e
