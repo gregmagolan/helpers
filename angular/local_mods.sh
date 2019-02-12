@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 set -eux -o pipefail
 # -e: exits if a command fails
 # -u: errors if an variable is referenced before being set
