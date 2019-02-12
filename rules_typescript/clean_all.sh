@@ -5,6 +5,9 @@ set -eux -o pipefail
 # -o pipefail: causes a pipeline to produce a failure return code if any command errors
 
 rm -rf ./node_modules
+rm -rf ./internal/e2e/npm_packages/ts_auto_deps/simple/BUILD
+rm -rf ./internal/e2e/npm_packages/ts_auto_deps/simple/BUILD.bazel
+
 bazel clean --expunge
 
 (
