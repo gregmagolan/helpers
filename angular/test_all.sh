@@ -10,8 +10,7 @@ SCRIPT_DIR=$(cd $(dirname "$0"); pwd)
 
 $SCRIPT_DIR/local_mods.sh
 $SCRIPT_DIR/clean_all.sh
-
-yarn
+yarn install
 
 ### test_ivy_aot
 yarn test-ivy-aot //... --symlink_prefix=dist/

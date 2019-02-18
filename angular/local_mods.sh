@@ -11,5 +11,4 @@ sed -i.bak 's/"editor.formatOnSave": true/"editor.formatOnSave": false/' ./.vsco
 rm ./.vscode/settings.json.bak
 
 # Make sure workspace_status_command always runs
-sed -i.bak 's/build:release/build/' ./.bazelrc
-rm ./.bazelrc.bak
+echo "build --workspace_status_command=\"node ./tools/bazel_stamp_vars.js\"" >> ./.bazelrc
