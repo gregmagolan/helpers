@@ -31,6 +31,10 @@ else
     bazel test ...
 fi
 
+yarn packages-typescript
+yarn packages-karma
+yarn packages-jasmine
+
 # These targets should run
 bazel run //internal/node/test:no_deps
 bazel run //internal/node/test:has_deps_legacy
@@ -41,6 +45,8 @@ bazel run @fine_grained_deps_yarn//typescript/bin:tsc
 
 # bazel test @program_example//... # DO NOT WORK WITH --nolegacy_external_runfiles
 # bazel test @packages_example//... # DO NOT WORK WITH --nolegacy_external_runfiles
+
+./e2e/test.sh
 
 yarn test:e2e
 

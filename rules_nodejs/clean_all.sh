@@ -8,26 +8,23 @@ set -eux -o pipefail
 
 rm -rf ./node_modules
 rm -rf ./internal/test/node_modules
-rm -rf ./internal/npm_install/test/node_modules
+rm -rf ./internal/npm_install/test/package/node_modules
 
 bazel clean --expunge
 
-(
-  cd examples/program
-  bazel clean --expunge
-  rm -rf ./node_modules
-)
-
-(
-  cd internal/e2e
-  for testDir in $(ls) ; do
-    [[ -d "$testDir" ]] || continue
-    (
-      cd $testDir
-      if [[ -f "WORKSPACE" ]] ; then
-        rm -rf ./node_modules
-        bazel clean --expunge
-      fi
-    )
-  done
-)
+for rootDir in examples e2e internal/e2e packages ; do
+  (
+    cd $rootDir
+    for subDir in $(ls) ; do
+      [[ -d "$subDir" ]] || continue
+      (
+        cd $subDir
+        if [[ -e 'WORKSPACE' ]] ; then
+          printf "\n\nCleaning /$rootDir/$subDir\n"
+          bazel clean --expunge
+          rm -rf node_modules
+        fi
+      )
+    done
+  )
+done
