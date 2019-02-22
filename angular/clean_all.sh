@@ -19,3 +19,9 @@ rm -rf ./dist
   bazel clean --expunge
   rm -rf ./node_modules
 )
+
+(
+  cd integration/bazel-schematics
+  rm -rf ./node_modules
+  rm -rf ./demo
+)

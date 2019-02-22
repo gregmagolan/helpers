@@ -23,11 +23,11 @@ yarn bazel test //... --build_tag_filters=-ivy-only,local --test_tag_filters=-iv
 
 (
   cd integration/bazel
-  bazel build ...
-  bazel test ...
+  yarn test
 )
 
 (
   cd integration/bazel-schematics
+  yarn
   ./test.sh
 )
