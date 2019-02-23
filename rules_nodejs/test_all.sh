@@ -22,20 +22,30 @@ SCRIPT_DIR=$(cd $(dirname "$0"); pwd)
 
 $SCRIPT_DIR/clean_all.sh
 
+printf "\n\nRunning @nodejs//:yarn\n"
 bazel run @nodejs//:yarn
+
+printf "\n\nBuilding all targets\n"
 bazel build ...
 
+printf "\n\nTesting all targets\n"
 if [[ $machine == "Windows" ]] ; then
     bazel test ... --test_tag_filters=-fix-windows
 else
     bazel test ...
 fi
 
+printf "\n\nTesting /packages/typescript\n"
 yarn packages-typescript
+
+printf "\n\nTesting /packages/karma\n"
 yarn packages-karma
+
+printf "\n\nTesting /packages/jasmine\n"
 yarn packages-jasmine
 
 # These targets should run
+printf "\n\nTesting set of runnable targets\n"
 bazel run //internal/node/test:no_deps
 bazel run //internal/node/test:has_deps_legacy
 bazel run //internal/node/test:has_deps
@@ -48,6 +58,8 @@ bazel run @fine_grained_deps_yarn//typescript/bin:tsc
 
 ./e2e/test.sh
 
+printf "\n\nTesting /internal/e2e\n"
 yarn test:e2e
 
+printf "\n\nTesting /examples\n"
 yarn test:examples
