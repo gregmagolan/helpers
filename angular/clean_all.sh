@@ -10,6 +10,7 @@ bazel clean --expunge
 
 rm -rf ./node_modules
 rm -rf ./packages/bazel/node_modules
+rm -rf ./integration/bazel/node_modules
 rm -rf ./integration/bazel-schematics/node_modules
 rm -rf ./tools/npm/node_modules
 rm -rf ./dist
